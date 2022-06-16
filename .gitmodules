@@ -1,0 +1,6 @@
+[submodule "LP_detection"]
+	path = LP_detection
+	url = https://github.com/parksey/LP_detection.git
+[submodule "LP_ocr"]
+	path = LP_ocr
+	url = https://github.com/parksey/LP_ocr.git
