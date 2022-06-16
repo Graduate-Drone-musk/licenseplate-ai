@@ -55,7 +55,7 @@ if __name__=="__main__":
     ROOT = FILE.parents[1]  # YOLOv5 root directory
 
     ori_img_path = ROOT / 'dataset\\Training\\ocr_image\\ocr_data'
-    ori_img_valid = ROOT / 'dataset\\Validation\\[원천]자동차번호판OCR데이터'
+    ori_img_valid = ROOT / 'dataset\\Validation\\ocr_data'
     li = os.listdir(ori_img_path)
     valid_li = os.listdir(ori_img_valid)
     
@@ -75,7 +75,7 @@ if __name__=="__main__":
     temp1 = 0
     temp2 = 0
     for index, name in enumerate(li):
-        if index % 27 == 0: #60000 / 27
+        if index % 27 == 0: # 80000 / 27
             temp1+=1   
             img_array = np.fromfile(os.path.join(ori_img_path, name), np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -91,7 +91,7 @@ if __name__=="__main__":
             result_train.append("{} {}".format(path, name))
 
     for index, name in enumerate(valid_li):
-        if index % 14 == 0:    
+        if index % 14 == 0: # 10000 / 14
             temp2 += 1
             img_array = np.fromfile(os.path.join(ori_img_valid, name), np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

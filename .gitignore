@@ -260,3 +260,5 @@ carplate_img/
 dataset/Training
 dataset/Validation
 dataset/원본이미지
+saved_models
+lmdb
