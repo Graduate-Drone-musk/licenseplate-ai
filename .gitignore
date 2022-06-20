@@ -261,3 +261,6 @@ dataset/Validation
 dataset/원본이미지
 saved_models
 lmdb
+
+secrectKey.txt
+secret.py

@@ -1,4 +1,4 @@
-from deep_text_recognition_benchmark import create_lmdb_dataset
+from LP_ocr import create_lmdb_dataset
 
 import os    
 import glob

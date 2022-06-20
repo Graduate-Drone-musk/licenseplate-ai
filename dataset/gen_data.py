@@ -75,7 +75,7 @@ if __name__=="__main__":
     temp1 = 0
     temp2 = 0
     for index, name in enumerate(li):
-        if index % 27 == 0: # 80000 / 27
+        if index % 16 == 0: # 80000 / 16 : 5000
             temp1+=1   
             img_array = np.fromfile(os.path.join(ori_img_path, name), np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -91,7 +91,7 @@ if __name__=="__main__":
             result_train.append("{} {}".format(path, name))
 
     for index, name in enumerate(valid_li):
-        if index % 14 == 0: # 10000 / 14
+        if index % 20 == 0: # 10000 / 20 : 500
             temp2 += 1
             img_array = np.fromfile(os.path.join(ori_img_valid, name), np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
