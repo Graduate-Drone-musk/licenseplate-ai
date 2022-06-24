@@ -264,3 +264,8 @@ lmdb
 
 secrectKey.txt
 secret.py
+
+# img folder
+DB_image/
+temp_img/
+result_img/

@@ -35,6 +35,10 @@ def temp():
 
 def crop_img(setting, label_list):
     result_path = setting["result_path"] / setting["name"]
+    crop_path = result_path / "crop"
+    print(crop_path)
+    if not os.path.isdir(crop_path):
+        os.mkdir(crop_path)
     
     for label in label_list:
         with open(label, 'r') as f:
@@ -52,5 +56,5 @@ def crop_img(setting, label_list):
                 y = int(int_loc[1] * img_shape[0])
                 h = int(int_loc[3] * img_shape[1])
                 crop_img = image[y-h//2:y+h//2, x-w//2:x+w//2+1]
-                cv2.imwrite(result_path / "crop" /'{}_{}.jpg'.format(name,le) ,crop_img)
+                cv2.imwrite(crop_path /'{}_{}.jpg'.format(name,le) ,crop_img)
                 le+=1
