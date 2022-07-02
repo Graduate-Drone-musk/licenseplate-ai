@@ -14,3 +14,6 @@ This license plate detection model is a model for Korean License Plate Recogniti
 5. Text Recognize usig "TPS-VGG-BiLSTM-CTC"
 
 <img src="./figures/lp_process.png" width="1000" title="Model process">
+
+
+

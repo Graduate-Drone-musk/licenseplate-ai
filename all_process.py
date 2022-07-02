@@ -39,7 +39,7 @@ if __name__ == "__main__":
     day = get_today()
     
     # download
-    donwload_s3.download_s3(s3, s3_bucket_name, day)
+    donw_path = donwload_s3.download_s3(s3, s3_bucket_name, day)
 
     setting = set()
     # setting["name"] = get_today()
@@ -63,6 +63,9 @@ if __name__ == "__main__":
             todo_process.append(db)
             
     setting["source"] = ROOT/ "temp_img"
+    if not os.path.isdir(setting["source"]):
+        os.mkdir(setting["source"])
+    
     
     temp_list = {}
     for todo in todo_process:
@@ -81,16 +84,15 @@ if __name__ == "__main__":
     crop_img(setting, label_list)
 
     # crop to recognize
-    # LP_ocr.demo.license_recognize(setting)
-    
+    LP_ocr.demo.license_recognize(setting)
     
     # 다시 분리
     result =  setting["result_path"] / day
     if not os.path.isdir(result):
         os.mkdir(result)
-        
+    
     # label 값 읽기
-    with open(f'{detect_result_path}/crop/result.txt', 'r', encoding='utf-8') as f:
+    with open(detect_result_path/'crop'/'result.txt', 'r', encoding='cp949') as f:
         recognize_list = f.readlines()
 
     for path, file_list in temp_list.items():
@@ -132,12 +134,12 @@ if __name__ == "__main__":
                     string = "{} {}".format(p,r)
                     recog_result.append(string)
         
-        with open(f'{crop_folder}/result.txt', 'w', encoding='utf-8') as f:
+        with open(crop_folder / 'result.txt', 'w', encoding='utf-8') as f:
             f.write(''.join(recog_result))
     
     # Delete all file
-    # shutil.rmtree(detect_result_path)
-    
+    shutil.rmtree(detect_result_path)
+    shutil.rmtree(setting["source"])
     exit()
     
     # 해야할 것
@@ -146,22 +148,6 @@ if __name__ == "__main__":
     # 해당 파일 원본 전송 {날짜_시간_번호판}
     # 언제 삭제할지 고민해야함
     
-    # result_img\20220623
-    result_img = setting["result_path"] / day
-    if not os.path.isdir(result_img):
-        os.mkdir(result_img)
-    
-    # 각 폴더에서 detect 진행
-    # 연속으로 사용 불가: Out of memory
-    # 따라서 한 곳에 모아 준 후 해야함
-    # Get Image Folder in dir
-    # folder_list = os.listdir(str(source_path))
-    # 파일 옮기기
-    # for folder in folder_list:
-    #     file_list = glob.glob(str(source_path/folder/"*"))
-    #     for file in file_list:
-    #         name = file.split("\\")[-1]
-    #         shutil.copy(file, str(input_path/name))
     
     
         

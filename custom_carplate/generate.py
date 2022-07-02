@@ -53,38 +53,38 @@ if __name__=="__main__":
     # train_data 만들기
     # Original
     train_ori = gen_ori.ImageGenerator(train_img_dir, main_dir, cnt=cnt)
-    num_list = [225,25,25,25,13,13,13]
+    num_list = [400,20,20,20,250,250,40]
     make_img(train_ori, num_list, train_dir)
     cnt = train_ori.cnt
     
     # Augmentation
     train_aug = gen_aug.ImageGenerator(train_img_dir, main_dir, cnt=cnt)
-    num_list = [25,25,25,25,13,13,13]
+    num_list = [400,20,20,20,250,250,40]
     make_img(train_aug, num_list, train_dir)
     cnt = train_aug.cnt
     
     # Perspective
     train_per = gen_per.ImageGenerator(train_img_dir, main_dir, cnt=cnt)
-    num_list = [25,25,25,25,13,13,13]
+    num_list = [400,20,20,20,250,250,40]
     make_img(train_per, num_list, train_dir)
     cnt = train_per.cnt
     
     # valid_data 만들기
     # Original
     valid_ori = gen_ori.ImageGenerator(valid_img_dir, main_dir, cnt=cnt)
-    num_list = [10,10,10,10,4,4,4]
+    num_list = [80,4,4,4,50,50,8]
     make_img(valid_ori, num_list, valid_dir)
     cnt = valid_ori.cnt
     
     # Augmentation
     valid_aug = gen_aug.ImageGenerator(valid_img_dir, main_dir, cnt=cnt)
-    num_list = [10,10,10,10,4,4,4]
+    num_list = [80,4,4,4,50,50,8]
     make_img(valid_aug, num_list, valid_dir)
     cnt = valid_aug.cnt
     
     # Perspective
     valid_per = gen_per.ImageGenerator(valid_img_dir, main_dir, cnt=cnt)
-    num_list = [10,10,10,10,4,4,4]
+    num_list = [80,4,4,4,50,50,8]
     make_img(valid_per, num_list, valid_dir)
     cnt = valid_per.cnt
 

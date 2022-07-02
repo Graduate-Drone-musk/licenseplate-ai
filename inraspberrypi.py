@@ -45,7 +45,7 @@ def get_today():
     now = time.localtime(time.time()) 
     now_year = str(now.tm_year)
     now_month = '0'+str(now.tm_mon) if now.tm_mon//10==0 else str(now.tm_mon) 
-    now_day =  '0'+str(now.tm_mday) if now.tm_mday//10==0 else str(now.tm_mday+1)
+    now_day =  '0'+str(now.tm_mday) if now.tm_mday//10==0 else str(now.tm_mday)
     return now_year + now_month + now_day
     
     
@@ -86,7 +86,7 @@ def upload_img():
                 new_data.append(file)
         txt_list = txt_list + new_data
         txt_list.sort()
-        return
+
         if new_data:
             s3.Object(bucket_name, s3_main_dir + "/check.txt").put(Body='\n'.join(txt_list))
             have_upload = True
@@ -94,7 +94,7 @@ def upload_img():
         # Check.txt 파일 없을 때 
         new_data = upload_list
         print("d",new_data)
-        # s3.Object(bucket_name, s3_main_dir + "/check.txt").put(Body='\n'.join(new_data))
+        s3.Object(bucket_name, s3_main_dir + "/check.txt").put(Body='\n'.join(new_data))
         have_upload = True
         
     
