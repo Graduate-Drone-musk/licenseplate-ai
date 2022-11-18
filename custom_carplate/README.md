@@ -1,3 +1,9 @@
+# [copyright by qjadud1994](https://github.com/qjadud1994/Korean-license-plate-Generator)
+
+```
+해당 깃의 코드 리팩토링 및 최신 번호판 규격까지 추가
+```
+
 # Korean-license-plate-Generator
 
 Generate Synthetic Korea License Plate.
